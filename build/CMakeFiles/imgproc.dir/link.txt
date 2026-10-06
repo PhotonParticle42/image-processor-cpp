@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/imgproc.dir/src/main.cpp.o -o imgproc 
