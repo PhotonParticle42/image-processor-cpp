@@ -1,8 +1,9 @@
 #include <iostream>
-#include "imgproc/image.hpp"
+#include "imgproc/io.hpp"
 
 int main()
 {
+    /*
     Image image(3, 2, 3);  // 3 wide, 2 tall, RGB
 
     // Checkerboard: white, black, white / black, white, black
@@ -33,7 +34,16 @@ int main()
         std::cout << "FAIL: bad channel did not throw\n";
     } catch (const std::out_of_range& e) {
         std::cout << "PASS: bad channel threw: " << e.what() << "\n";
-    }
+    }*/
+
+    std::string path1 = "/home/aniruddha/projects/image-processor-cpp/tests/mario_PNG124.png";
+    Image imageObj = loadImage(path1);
+
+    std::string path2 = "/home/aniruddha/projects/image-processor-cpp/tests/saved_mario_PNG124.png";
+    saveImage(imageObj, path2);
+
+    std::cout << "Loading Saved Image...\n";
+    loadImage(path2);
 
     return 0;
 }

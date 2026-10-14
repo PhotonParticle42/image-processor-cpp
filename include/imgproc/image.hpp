@@ -4,9 +4,9 @@
 
 class Image {
 public:
-    Image(size_t width, size_t height, size_t channels)
+    Image(size_t width, size_t height, size_t channels, const uint8_t* src)
         : _width(width), _height(height), _channels(channels),
-          _data(width * height * channels, 0) {}
+          _data(src, src + width * height * channels) {}
 
     size_t width() const    { return _width; }
     size_t height() const   { return _height; }
@@ -20,6 +20,11 @@ public:
     const uint8_t& at(size_t row, size_t column, size_t c) const  // checked
     {
         return _data[getIndex(row, column, c)];
+    }
+
+    const std::vector<uint8_t>& getData() const 
+    {
+        return _data;
     }
 
 private:
