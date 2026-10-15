@@ -1,1 +1,0 @@
-/usr/bin/c++ -fsanitize=address,undefined -g CMakeFiles/imgproc.dir/src/main.cpp.o CMakeFiles/imgproc.dir/src/io.cpp.o -o imgproc 

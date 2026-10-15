@@ -1,3 +1,4 @@
 build/
 info/
 third_party/
+build-asan/
