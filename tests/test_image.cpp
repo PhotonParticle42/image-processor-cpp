@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <cstdint>
-#include "../include/imgproc/image.hpp"
+#include "imgproc/image.hpp"
 
 // Set up mock image data
 class ImageTest : public ::testing::Test {
