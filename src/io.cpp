@@ -11,15 +11,14 @@ Image loadImage(const std::string& path)
     int width{ 0 };
     int height{ 0 };
     int numChannels{ 0 };
+    constexpr int kChannels{ 4 };
 
     std::unique_ptr<unsigned char, decltype(&stbi_image_free)> data(
-        stbi_load(path.c_str(), &width, &height, &numChannels, 4), stbi_image_free);
+        stbi_load(path.c_str(), &width, &height, &numChannels, kChannels), stbi_image_free);
 
     if (!data) {
         throw std::runtime_error("stbi_load failed for '" + path + "': " + stbi_failure_reason());
     }
-
-    std::cout << "width = " << width << ", height = " << height << ", no of channels = " << numChannels << "\n";
 
     Image img(width, height, numChannels, data.get());
     return img;
