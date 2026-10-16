@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
         ", height = " << imageObj.height() <<
         ", no of channels = " << imageObj.channels() << "\n";
 
-    std::string output{ argv[1] };
+    std::string output{ argv[2] };
     saveImage(imageObj, output);
 
     std::cout << "Loading Saved Image...\n";

@@ -1,0 +1,287 @@
+{
+  "note": "All PNG images are 256x256. For indexed images, stb_image decodes to RGB or RGBA. PNG grayscale 16-bit: use stbi_load_16. Pixel samples for P images are palette indices. RGBA transparent pixels still have meaningful RGB values.",
+  "images": [
+    {
+      "file": "01_rgb_quadrants.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "description": "RGB primary color quadrants",
+      "sample_pixels": {
+        "0,0": [
+          255,
+          0,
+          0
+        ],
+        "128,128": [
+          255,
+          255,
+          0
+        ],
+        "255,255": [
+          255,
+          255,
+          0
+        ]
+      }
+    },
+    {
+      "file": "02_rgba_alpha_gradient.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "description": "Red/magenta RGBA with left-to-right alpha 0..255",
+      "sample_pixels": {
+        "0,0": [
+          255,
+          35,
+          85,
+          0
+        ],
+        "128,128": [
+          255,
+          35,
+          85,
+          128
+        ],
+        "255,255": [
+          255,
+          35,
+          85,
+          255
+        ]
+      }
+    },
+    {
+      "file": "03_gray_gradient.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "description": "8-bit grayscale horizontal ramp",
+      "sample_pixels": {
+        "0,0": 0,
+        "128,128": 128,
+        "255,255": 255
+      }
+    },
+    {
+      "file": "04_gray_alpha.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "LA",
+      "description": "Grayscale + alpha; intensity increases x, alpha increases y",
+      "sample_pixels": {
+        "0,0": [
+          0,
+          0
+        ],
+        "128,128": [
+          128,
+          128
+        ],
+        "255,255": [
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "file": "05_checkerboard.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "description": "16px black/white checkerboard",
+      "sample_pixels": {
+        "0,0": [
+          255,
+          255,
+          255
+        ],
+        "128,128": [
+          255,
+          255,
+          255
+        ],
+        "255,255": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "file": "06_rgb_gradient.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "description": "R=x, G=y, B=(x+y)//2",
+      "sample_pixels": {
+        "0,0": [
+          0,
+          0,
+          0
+        ],
+        "128,128": [
+          128,
+          128,
+          128
+        ],
+        "255,255": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "file": "07_indexed_palette.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "P",
+      "description": "Palette PNG with eight color swatches",
+      "sample_pixels": {
+        "0,0": 0,
+        "128,128": 6,
+        "255,255": 7
+      }
+    },
+    {
+      "file": "08_solid_rgb.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "description": "Uniform RGB image; every pixel = (12,34,56)",
+      "sample_pixels": {
+        "0,0": [
+          12,
+          34,
+          56
+        ],
+        "128,128": [
+          12,
+          34,
+          56
+        ],
+        "255,255": [
+          12,
+          34,
+          56
+        ]
+      }
+    },
+    {
+      "file": "09_rgba_shapes.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "description": "Transparent background, semi-transparent circle, opaque square",
+      "sample_pixels": {
+        "0,0": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "128,128": [
+          255,
+          190,
+          15,
+          255
+        ],
+        "255,255": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "file": "10_gray16_gradient.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "I;16",
+      "description": "16-bit grayscale 0..65535",
+      "sample_pixels": {
+        "0,0": 0,
+        "128,128": 32896,
+        "255,255": 65535
+      }
+    },
+    {
+      "file": "11_vertical_stripes.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "description": "8px RGB vertical stripes",
+      "sample_pixels": {
+        "0,0": [
+          255,
+          255,
+          255
+        ],
+        "128,128": [
+          255,
+          255,
+          255
+        ],
+        "255,255": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "file": "12_alpha_boundaries.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "description": "RGBA bands alpha = 0,1,128,255",
+      "sample_pixels": {
+        "0,0": [
+          255,
+          0,
+          0,
+          0
+        ],
+        "128,128": [
+          0,
+          0,
+          255,
+          128
+        ],
+        "255,255": [
+          255,
+          255,
+          0,
+          255
+        ]
+      }
+    }
+  ]
+}
