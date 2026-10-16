@@ -19,8 +19,10 @@ Image loadImage(const std::string& path)
     if (!data) {
         throw std::runtime_error("stbi_load failed for '" + path + "': " + stbi_failure_reason());
     }
+    std::cout << "file had " << numChannels << ", buffer has " << kChannels << "\n";
 
-    Image img(width, height, numChannels, data.get());
+    //construct the image with the number of bytes in the buffer
+    Image img(width, height, kChannels, data.get());
     return img;
 }
 
