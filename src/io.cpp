@@ -5,6 +5,7 @@
 #include "stb/stb_image_write.h"
 #include <iostream>
 #include <memory>
+#include <cmath>
 
 Image loadImage(const std::string& path)
 {
@@ -33,4 +34,24 @@ void saveImage(const Image& img, const std::string& path)
     	throw std::runtime_error("stbi_write_png failed for '" + path + "'./n");
     }
     std::cout << "Saved Image successfully: " << path << ".\n";
+}
+
+Image toGrayscale(const Image& in)
+{
+    if (in.channels() < 3) {
+        throw std::invalid_argument("toGrayscale: input needs at least 3 channels");
+    }
+
+    Image out(in.width(), in.height(), 1);   // blank constructor
+
+    //height is how many rows, width is how many columns.
+    for(size_t row = 0; row < in.height(); row++) {
+        for(size_t col = 0; col < in.width(); col++) {
+
+            double gray = 0.299 * in.at(row, col, 0) + 0.587 * in.at(row, col, 1) + 0.114 * in.at(row, col, 2);
+            out.at(row, col, 0) = static_cast<uint8_t>(std::lround(gray));
+        }
+    }
+
+    return out;
 }
