@@ -36,7 +36,8 @@ int main(int argc, char* argv[])
         ", no of channels = " << imageObj.channels() << "\n";
 
     std::string output{ argv[2] };
-    saveImage(imageObj, output);
+    Image grayScale = toGrayscale(imageObj);
+    saveImage(grayScale, output);
 
     std::cout << "Loading Saved Image...\n";
     Image imageObj2 = loadImage(output);

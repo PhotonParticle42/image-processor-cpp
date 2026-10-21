@@ -9,6 +9,11 @@ public:
         : _width(width), _height(height), _channels(channels),
           _data(src, src + width * height * channels) {}
 
+    //Blank Constructor
+    Image(size_t width, size_t height, size_t channels)
+        : _width(width), _height(height), _channels(channels),
+          _data(width * height * channels, 0) {}
+
     size_t width() const    { return _width; }
     size_t height() const   { return _height; }
     size_t channels() const { return _channels; }
