@@ -7,6 +7,29 @@
 #include <memory>
 #include <cmath>
 
+namespace {
+    uint8_t CalGreyScaleWithBT601(const Image& in, size_t row, size_t col)
+    {
+        double gray{ 0.0 };
+        gray = 0.299 * in.at(row, col, 0) + 0.587 * in.at(row, col, 1) + 0.114 * in.at(row, col, 2);    
+        return static_cast<uint8_t>(std::lround(gray));
+    }
+
+    uint8_t CalGreyScaleWithBT709(const Image& in, size_t row, size_t col)
+    {
+        double gray{ 0.0 };
+        gray = 0.2126 * in.at(row, col, 0) + 0.7152 * in.at(row, col, 1) + 0.0722 * in.at(row, col, 2);    
+        return static_cast<uint8_t>(std::lround(gray));
+    }
+
+    uint8_t CalGreyScaleWithAverage(const Image& in, size_t row, size_t col)
+    {
+        double gray{ 0.0 };
+        gray = (in.at(row, col, 0) + in.at(row, col, 1) + in.at(row, col, 2)) / 3;    
+        return static_cast<uint8_t>(std::lround(gray));
+    }
+}
+
 Image loadImage(const std::string& path)
 {
     int width{ 0 };
@@ -36,7 +59,7 @@ void saveImage(const Image& img, const std::string& path)
     std::cout << "Saved Image successfully: " << path << ".\n";
 }
 
-Image toGrayscale(const Image& in)
+Image toGrayscale(const Image& in, GrayMethod method)
 {
     if (in.channels() < 3) {
         throw std::invalid_argument("toGrayscale: input needs at least 3 channels");
@@ -48,8 +71,18 @@ Image toGrayscale(const Image& in)
     for(size_t row = 0; row < in.height(); row++) {
         for(size_t col = 0; col < in.width(); col++) {
 
-            double gray = 0.299 * in.at(row, col, 0) + 0.587 * in.at(row, col, 1) + 0.114 * in.at(row, col, 2);
-            out.at(row, col, 0) = static_cast<uint8_t>(std::lround(gray));
+            uint8_t greyedValue{ 0 };
+            if (method == GrayMethod::BT601) {
+                greyedValue = CalGreyScaleWithBT601(in, row, col);
+            } else if (method == GrayMethod::BT709) {
+                greyedValue = CalGreyScaleWithBT709(in, row, col);
+            } else if (method == GrayMethod::Average) {
+                greyedValue = CalGreyScaleWithAverage(in, row, col);
+            } else {
+                throw std::runtime_error("Unknown Method Entered For Grayscale calculation.");
+            }
+
+            out.at(row, col, 0) = greyedValue;
         }
     }
 
